@@ -5,12 +5,13 @@ import (
 	"reflect"
 	"strings"
 	"testing"
+
+	"github.com/Camarbro/Sintactico"
 )
 
 func TestParser_ParseStatement(t *testing.T) {
 
-	//Erasmo
-	f, _ := ioutil.ReadFile("C://MARCO//marco.txt")
+	f, _ := ioutil.ReadFile("SourceCode.txt")
 	z := string(f[:])
 	println()
 	println("Su funcion es: ", z)

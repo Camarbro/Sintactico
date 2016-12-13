@@ -3,6 +3,8 @@ package camargo_test
 import (
 	"strings"
 	"testing"
+
+	"github.com/Camarbro/Sintactico"
 )
 
 // Ensure the scanner can scan tokens correctly.
