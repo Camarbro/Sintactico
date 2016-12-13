@@ -1,4 +1,4 @@
-package marco
+package camargo
 
 // Token represents a lexical token.
 type Token int
@@ -9,7 +9,7 @@ const (
 	EOF
 	WS
 	// Literals
-	IDENT // main
+	IDENT
 	// Misc characters
 	ASTERISK      // *
 	COMMA         // ,
@@ -23,38 +23,33 @@ const (
 	Asignaicon    // =
 	AgruppadorDER // [
 	AgruppadorISQ // ]
+	OPREL         //== ! + - / * |
 
 	// Keywords
 	SELECT
 	FROM
-	GOIF
-	GOSWITCH
-	GOEND
-	GOINT // Tipodedato
-	GOFUNC
-	GOMAIN
-	GOELSE
-	GOFOR
-	GOELSEIF
-	VAR // variables
-	GOBREAK
-	GOWHILE
-	GODO
-	GOTRY
-	GOCATCH
-	GOFINALLY
-	GOPOINT
-	GONEW
-	GOFIXED
-	GOFOREACH
-	GOUNCHECKED
-	GOIMPORT
-
-	//Bonifaz
-
-	MCCREATE
-	DATABASE
-	MCUSE
-	MCCREATETABLE
-
+	CAMARIF
+	CAMARSWITCH
+	CAMAREND
+	CAMARINT
+	CAMARFUNC
+	CAMARMAIN
+	CAMARELSE
+	CAMARFOR
+	CAMARELSEIF
+	VAR
+	CAMARBREAK
+	CAMARWHILE
+	CAMARDO
+	CAMARTRY
+	CAMARCATCH
+	CAMARFINALLY
+	CAMARPOINT
+	CAMARNEW
+	CAMARFIXED
+	CAMARFOREACH
+	CAMARUNCHECKED
+	CAMARIMPORT
+	CAMARRETURN
+	NUMEROS
 )

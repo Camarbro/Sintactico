@@ -1,4 +1,4 @@
-package marco
+package camargo
 
 import (
 	"bufio"
@@ -38,10 +38,36 @@ func (s *Scanner) Scan() (tok Token, lit string) {
 	switch ch {
 	case eof:
 		return EOF, ""
-	case '*':
-		return ASTERISK, string(ch)
+	//case '*':
+	//	return ASTERISK, string(ch)
 	case ',':
 		return COMMA, string(ch)
+	case '[':
+		return AgruppadorDER, string(ch)
+	case ']':
+		return AgruppadorISQ, string(ch)
+		//digit
+	case '0':
+		return NUMEROS, string(ch)
+	case '1':
+		return NUMEROS, string(ch)
+	case '2':
+		return NUMEROS, string(ch)
+	case '3':
+		return NUMEROS, string(ch)
+	case '4':
+		return NUMEROS, string(ch)
+	case '5':
+		return NUMEROS, string(ch)
+	case '6':
+		return NUMEROS, string(ch)
+	case '7':
+		return NUMEROS, string(ch)
+	case '8':
+		return NUMEROS, string(ch)
+	case '9':
+		return NUMEROS, string(ch)
+
 	case ':':
 		return DosPunt, string(ch)
 	case '(':
@@ -56,12 +82,24 @@ func (s *Scanner) Scan() (tok Token, lit string) {
 		return LlaveIsq, string(ch)
 	case '\n':
 		return SaltoDeL, string(ch)
+	//case '=':
+	//	return Asignaicon, string(ch)
+	case '+':
+		return OPREL, string(ch)
+	case '-':
+		return OPREL, string(ch)
+	case '/':
+		return OPREL, string(ch)
+	case '*':
+		return OPREL, string(ch)
 	case '=':
-		return Asignaicon, string(ch)
-	case '[':
-		return AgruppadorDER, string(ch)
-	case ']':
-		return AgruppadorISQ, string(ch)
+		return OPREL, string(ch)
+	case '>':
+		return OPREL, string(ch)
+	case '<':
+		return OPREL, string(ch)
+	case '&':
+		return OPREL, string(ch)
 	}
 
 	return ILLEGAL, string(ch)
@@ -114,60 +152,52 @@ func (s *Scanner) scanIdent() (tok Token, lit string) {
 		return SELECT, buf.String()
 	case "FROM":
 		return FROM, buf.String()
-	case "GOIF":
-		return GOIF, buf.String()
-	case "GOELSE":
-		return GOELSE, buf.String()
-	case "GOEND":
-		return GOEND, buf.String()
-	case "GOSWITCH":
-		return GOSWITCH, buf.String()
-	case "GOMAIN":
-		return GOMAIN, buf.String()
-	case "GOFUNC":
-		return GOFUNC, buf.String()
-	case "GOFOR":
-		return GOFOR, buf.String()
-	case "GOELSEIF":
-		return GOELSEIF, buf.String()
+	case "CAMARIF":
+		return CAMARIF, buf.String()
+	case "CAMARELSE":
+		return CAMARELSE, buf.String()
+	case "CAMAREND":
+		return CAMAREND, buf.String()
+	case "CAMARSWITCH":
+		return CAMARSWITCH, buf.String()
+	case "CAMARMAIN":
+		return CAMARMAIN, buf.String()
+	case "CAMARFUNC":
+		return CAMARFUNC, buf.String()
+	case "CAMARFOR":
+		return CAMARFOR, buf.String()
+	case "CAMARELSEIF":
+		return CAMARELSEIF, buf.String()
 	case "VAR":
 		return VAR, buf.String()
-	case "GOBREAK":
-		return GOBREAK, buf.String()
-	case "GOWHILE":
-		return GOWHILE, buf.String()
-	case "GODO":
-		return GODO, buf.String()
-	case "GOINT":
-		return GOINT, buf.String()
-	case "GOTRY":
-		return GOTRY, buf.String()
-	case "GOCATCH":
-		return GOCATCH, buf.String()
-	case "GOFINALLY":
-		return GOFINALLY, buf.String()
-	case "GOPOINT":
-		return GOPOINT, buf.String()
-	case "GONEW":
-		return GONEW, buf.String()
-	case "GOFIXED":
-		return GOFIXED, buf.String()
-	case "GOUNCHECKED":
-		return GOUNCHECKED, buf.String()
-	case "GOFOREACH":
-		return GOFOREACH, buf.String()
-	case "GOIMPORT":
-		return GOIMPORT, buf.String()
-
-		//Bonifaz
-	//case "MCCREATE":
-	//	return MCCREATE, buf.String()
-	//case "MCUSE":
-	//	return MCUSE, buf.String()
-	//case "DATABASE":
-	//	return DATABASE, buf.String()
-	//case "MCCREATETABLE":
-	//	return MCCREATETABLE, buf.String()
+	case "CAMARBREAK":
+		return CAMARBREAK, buf.String()
+	case "CAMARWHILE":
+		return CAMARWHILE, buf.String()
+	case "CAMARDO":
+		return CAMARDO, buf.String()
+	case "CAMARINT":
+		return CAMARINT, buf.String()
+	case "CAMARTRY":
+		return CAMARTRY, buf.String()
+	case "CAMARCATCH":
+		return CAMARCATCH, buf.String()
+	case "CAMARFINALLY":
+		return CAMARFINALLY, buf.String()
+	case "CAMARPOINT":
+		return CAMARPOINT, buf.String()
+	case "CAMARNEW":
+		return CAMARNEW, buf.String()
+	case "CAMARFIXED":
+		return CAMARFIXED, buf.String()
+	case "CAMARUNCHECKED":
+		return CAMARUNCHECKED, buf.String()
+	case "CAMARFOREACH":
+		return CAMARFOREACH, buf.String()
+	case "CAMARIMPORT":
+		return CAMARIMPORT, buf.String()
+	case "CAMARRETURN":
+		return CAMARRETURN, buf.String()
 
 	}
 
@@ -175,8 +205,6 @@ func (s *Scanner) scanIdent() (tok Token, lit string) {
 	return IDENT, buf.String()
 }
 
-// read reads the next rune from the bufferred reader.
-// Returns the rune(0) if an error occurs (or io.EOF is returned).
 func (s *Scanner) read() rune {
 	ch, _, err := s.r.ReadRune()
 	if err != nil {
